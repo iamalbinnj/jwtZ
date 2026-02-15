@@ -8,7 +8,10 @@
     "dist"
   ],
   "scripts": {
-    "dev": "ts-node src/index.ts"
+    "dev": "ts-node-dev --respawn --transpile-only index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "lint": "eslint . --ext .ts"
   },
   "keywords": [
     "jwt",
