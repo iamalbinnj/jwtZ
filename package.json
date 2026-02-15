@@ -23,6 +23,14 @@
     "nodejs"
   ],
   "author": "Albin N J",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iamalbinnj/jwtZ"
+  },
+  "bugs": {
+    "url": "https://github.com/iamalbinnj/jwtZ/issues"
+  },
+  "discussion": "https://github.com/iamalbinnj/jwtZ/discussions",
   "license": "MIT",
   "type": "commonjs",
   "dependencies": {
