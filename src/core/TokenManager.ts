@@ -62,13 +62,14 @@ export class TokenManager {
     extraPayload: Record<string, any> = {}
   ) {
     const jti = generateId();
+    const { exp, iat, nbf, jti: _jti, sub: _sub, typ: _typ, ...cleanPayload } = extraPayload;
 
     const token = jwt.sign(
       {
+        ...cleanPayload,
         sub: userId,
         jti,
         typ: "access",
-        ...extraPayload,
       },
       this.config.accessSecret,
       this.buildSignOptions(this.config.accessExpiresIn)

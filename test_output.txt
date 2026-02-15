@@ -1,0 +1,43 @@
+
+> jwtz@1.0.0 test
+> jest tests/core/TokenManager/generateAccessToken.test.ts
+
+FAIL tests/core/TokenManager/generateAccessToken.test.ts
+  TokenManager.generateAccessToken
+    ΓêÜ should generate token with valid userId (9 ms)
+    ΓêÜ should handle empty string userId (1 ms)
+    ΓêÜ should handle special characters in userId
+    ΓêÜ should handle very long userId
+    ΓêÜ should include extra payload properties (1 ms)
+    ΓêÜ original userId should take precedence over extra sub property
+    ΓêÜ generated jti should take precedence over extra jti property
+    ΓêÜ typ 'access' should take precedence over extra typ property
+    ΓêÜ should include issuer and audience when configured (1 ms)
+    ΓêÜ token should have correct iat and exp (1 ms)
+    ΓêÜ should generate unique jti across multiple calls (1 ms)
+    ΓêÜ should handle null/undefined userId (1 ms)
+    ├ù reserved JWT claims in extraPayload should not overwrite required claims
+    ΓêÜ should work with numeric userId
+    ΓêÜ should handle circular references in extra payload (should fail serialization) (3 ms)
+
+  ΓùÅ TokenManager.generateAccessToken ΓÇ║ reserved JWT claims in extraPayload should not overwrite required claims
+
+    Bad "options.expiresIn" option the payload already has an "exp" property.
+
+      64 |     const jti = generateId();
+      65 |
+    > 66 |     const token = jwt.sign(
+         |                       ^
+      67 |       {
+      68 |         ...extraPayload,
+      69 |         sub: userId,
+
+      at Object.module.exports [as sign] (node_modules/jsonwebtoken/sign.js:163:20)
+      at TokenManager.generateAccessToken (src/core/TokenManager.ts:66:23)
+      at Object.<anonymous> (tests/core/TokenManager/generateAccessToken.test.ts:105:31)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 14 passed, 15 total
+Snapshots:   0 total
+Time:        1.795 s, estimated 3 s
+Ran all test suites matching tests/core/TokenManager/generateAccessToken.test.ts.
